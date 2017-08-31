@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save'em all</title>
+    <script src="libs/jquery-3.2.1.min.js"></script>
+    <script src="libs/jquery.terminal-1.6.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="libs/jquery.terminal-1.6.3.min.css">
+    <link rel="stylesheet" type="text/css" href="Hai_Doggy.css">
+    <script>
+        $.getScript('Hai_Doggy.js');
+    </script>
+</head>
+<body>
+Weirdie JS just kidnapped dozens of puppies from a shelter!<br>
+A challenge was sent to the Internet Police - "Am weerdie, you sey? Proov it! For evry weerdie finding i give puppy back".<br>
+How many Puppies can we save, Internet Officers? Hurry up, Weirdie loves hot-dogs!
+
+<div>By now we have saved <span id="savedPuppies"></span> Puppies!</div>
+<div id="cases"></div>
+
+<div id="caseX" class="caseWrapper" hidden>
+    <h3>Case no. <span class="caseNo"></span></h3>
+    <pre class="caseCode"></pre>
+    <pre class="caseResult"></pre>
+    <br><button class="proveCaseButton">Prove the case!</button><span class="provedIndicator" hidden>Puppy saved!</span>
+</div>
+
+
+<div id="terminal"></div>
+<hr/>
+If you know how to save another Puppy, share it on <a href="https://github.com/ptomaszek/js-weirdie">GitHub</a>
+|
+@Terminal by <a href="http://terminal.jcubic.pl/">jcubic</a>
+</body>
+</html>

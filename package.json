@@ -1,0 +1,13 @@
+{
+  "name": "js-weirdie",
+  "version": "1.0.0",
+  "repository": "https://github.com/ptomaszek/js-weirdie.git",
+  "author": "Pawel Tomaszek <p.tomaszek.cs@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "3.2.1",
+    "jquery.terminal": "1.6.4",
+    "q": "1.5.0",
+    "typed.js": "^2.0.5"
+  }
+}

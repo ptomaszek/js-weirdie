@@ -1,6 +1,6 @@
 # JS Weirdie
 
-Showcase of JS weirdnesses.
+Showcase of JavaScript weirdnesses.
 
 ## Oh no...
 

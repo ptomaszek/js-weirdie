@@ -2,35 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Save'em all</title>
+    <title>JS Weirdie</title>
+
     <script src="libs/jquery-3.2.1.min.js"></script>
     <script src="libs/jquery.terminal-1.6.3.min.js"></script>
+    <script src="libs/typed.min.js"></script>
+    <script src="libs/q.js"></script>
+
     <link rel="stylesheet" type="text/css" href="libs/jquery.terminal-1.6.3.min.css">
-    <link rel="stylesheet" type="text/css" href="Hai_Doggy.css">
+    <link rel="stylesheet" type="text/css" href="src/css/Hai_Doggy.css">
     <script>
-        $.getScript('Hai_Doggy.js');
+        $.getScript('src/js/Hai_Doggy.js');
     </script>
 </head>
-<body>
-Weirdie JS just kidnapped dozens of puppies from a shelter!<br>
-A challenge was sent to the Internet Police - "Am weerdie, you sey? Proov it! For evry weerdie finding i give puppy back".<br>
-How many Puppies can we save, Internet Officers? Hurry up, Weirdie loves hot-dogs!
 
-<div>By now we have saved <span id="savedPuppies"></span> Puppies!</div>
-<div id="cases"></div>
+<div id="introText" hidden><b>JS Weirdie</b> just kidnapped dozens of <b>puppies</b> from a shelter! ^500
+    <p>A <b>challenge</b> was sent to the <b>Internet Police</b>:</p> ^300
+    <p id="challengeNote">`"Am weerdie, you sey? proov it!! FOr evry weerdie finding i give puppy back"`</p>
+    <br>
+    <p> ^800 How many puppies can we save, Internet Officers?</p>
+    <p> ^250 Hurry up ^250 - Weirdie loves hot-dogs!</p>
+    <hr/>
+</div>
+
+<div id="intro"></div>
+
+<div id="savedPuppies" hidden>Puppies saved: <span id="savedPuppiesCount">0</span></div>
 
 <div id="caseX" class="caseWrapper" hidden>
-    <h3>Case no. <span class="caseNo"></span></h3>
+    <div class="caseTitle">Case no. <span class="caseNo"></span>
+        <button class="proveCaseButton proveCaseButtonNormal">Prove the case</button>
+    </div>
     <pre class="caseCode"></pre>
     <pre class="caseResult"></pre>
-    <br><button class="proveCaseButton">Prove the case!</button><span class="provedIndicator" hidden>Puppy saved!</span>
+    <div class="provedIndicator">This is indeed weird ¯\_(ツ)_/¯ Puppy saved!</div>
+</div>
+
+<div id="cases">
+    <div id="proveAllCasesWrapper" hidden>
+        <button id="proveAllCasesButton" class="proveCaseButton">Prove all the cases</button>
+    </div>
 </div>
 
 
-<div id="terminal"></div>
-<hr/>
-If you know how to save another Puppy, share it on <a href="https://github.com/ptomaszek/js-weirdie">GitHub</a>
-|
-@Terminal by <a href="http://terminal.jcubic.pl/">jcubic</a>
+<div id="terminalWrapper" hidden>
+    <div id="terminal"></div>
+</div>
+
+<div id="footer" hidden>
+    <hr/>
+    If you know how to save another Puppy, share it on <a href="https://github.com/ptomaszek/js-weirdie">GitHub</a>
+    |
+    @Terminal by <a href="http://terminal.jcubic.pl/">jcubic</a>
+</div>
 </body>
 </html>

@@ -1,0 +1,103 @@
+html {
+    font-family: Helvetica, sans-serif;
+    padding: 50px 0 0 50px;
+}
+
+#introText {
+    margin-bottom: 20px;
+}
+
+#challengeNote {
+    font-style: italic;
+    font-family: Georgia, serif;
+    padding-left: 20px;
+}
+
+#savedPuppies {
+    padding-top: 40px;
+}
+
+#cases {
+    display: inline-block;
+}
+
+.caseWrapper {
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+#cases .proveCaseButton {
+    float: right;
+    padding: 5px 5px;
+    font-size: 12px;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%) repeat-x;
+    border: 1px solid rgba(27, 31, 35, 0.2);
+    -webkit-appearance: none;
+}
+
+#cases #proveAllCasesWrapper {
+    margin-bottom: 50px;
+}
+
+#cases .caseWrapper .caseTitle {
+    font-family: "Bookman Old Style", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 32px;
+
+    padding: 5px 10px;
+    background-color: #fafbfc;
+    border-bottom: 1px solid #e1e4e8;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+#cases .caseWrapper .provedIndicator {
+    font-family: "Bookman Old Style", sans-serif;
+    background-color: #fafbfc;
+    visibility: hidden;
+    height: 30px;
+    padding-left: 5px;
+}
+
+#cases .caseWrapper .caseCode {
+    padding: 5px 10px;
+    margin-top: 0;
+    display: inline-block;
+    width: 500px;
+    border-right: 1px solid red;
+}
+
+#cases .caseWrapper .caseResult {
+    padding: 5px 10px;
+    margin-top: 0;
+    display: inline-block;
+    width: 200px;
+    vertical-align: top;
+}
+
+#terminalWrapper {
+    float: right;
+    display: inline-block;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.terminal {
+    --color: rgba(0, 128, 0, 0.99);
+    --background: white;
+    border: 1px solid black;
+}
+
+#footer {
+    font-size: 12px;
+    margin-top: 100px;
+    text-align: center;
+}

@@ -50,6 +50,7 @@ function presentAllTheWeirdnesses() {
 
 function itIsOver() {
     $('#proveAllWeirdnessesButton').attr("disabled", true);
+    refreshSavedPuppiesCount();
 
     new Typed('#caseClosed', {
         strings: [$('#caseClosedText').html()],

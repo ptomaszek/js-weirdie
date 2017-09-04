@@ -55,7 +55,7 @@ function itIsOver() {
     new Typed('#caseClosed', {
         strings: [$('#caseClosedText').html()],
         backSpeed: 100,
-        typeSpeed: 18,
+        typeSpeed: 10,
         startDelay: 800,
         loop: false,
         showCursor: false,
@@ -110,9 +110,7 @@ function showWeirdness(weirdnessNo, code) {
     }
 
     $('#weirdnesses').append($weirdness);
-    $weirdness.slideDown('slow');
-
-    scrollToBottom();
+    $weirdness.slideDown('slow', scrollToBottom);
 }
 
 function executeWeirdCode(code, $result) {

@@ -13,15 +13,23 @@ html {
     padding-left: 20px;
 }
 
-#savedPuppies {
-    padding-top: 40px;
-}
-
-#cases {
+#weirdnesses {
     display: inline-block;
 }
 
-.caseWrapper {
+#puppiesCountLine {
+    padding: 40px 0 40px 0;
+}
+
+#savedPuppies {
+    float: left;
+}
+
+#weirdnesses #proveAllWeirdnessWrapper {
+    float: right;
+}
+
+.weirdnessWrapper {
     position: relative;
     margin-top: 16px;
     margin-bottom: 16px;
@@ -29,7 +37,7 @@ html {
     border-radius: 3px;
 }
 
-#cases .proveCaseButton {
+#weirdnesses .proveWeirdnessButton {
     float: right;
     padding: 5px 5px;
     font-size: 12px;
@@ -42,11 +50,7 @@ html {
     -webkit-appearance: none;
 }
 
-#cases #proveAllCasesWrapper {
-    margin-bottom: 50px;
-}
-
-#cases .caseWrapper .caseTitle {
+#weirdnesses .weirdnessWrapper .weirdnessTitle {
     font-family: "Bookman Old Style", sans-serif;
     font-size: 15px;
     font-weight: bold;
@@ -59,7 +63,7 @@ html {
     border-top-right-radius: 2px;
 }
 
-#cases .caseWrapper .provedIndicator {
+#weirdnesses .weirdnessWrapper .provedIndicator {
     font-family: "Bookman Old Style", sans-serif;
     background-color: #fafbfc;
     visibility: hidden;
@@ -67,7 +71,7 @@ html {
     padding-left: 5px;
 }
 
-#cases .caseWrapper .caseCode {
+#weirdnesses .weirdnessWrapper .weirdnessCode {
     padding: 5px 10px;
     margin-top: 0;
     display: inline-block;
@@ -75,12 +79,16 @@ html {
     border-right: 1px solid red;
 }
 
-#cases .caseWrapper .caseResult {
+#weirdnesses .weirdnessWrapper .weirdnessResult {
     padding: 5px 10px;
     margin-top: 0;
     display: inline-block;
     width: 200px;
     vertical-align: top;
+}
+
+#caseClosed{
+    margin-top: 20px;
 }
 
 #terminalWrapper {

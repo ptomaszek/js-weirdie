@@ -2,10 +2,9 @@ introAnd(presentAllTheWeirdnesses);
 
 function introAnd(callback) {
     new Typed('#intro', {
-        // typeSpeed: 1,
         // strings: ['H'],
         strings: [$('#introText').html()],
-        typeSpeed: 7,
+        typeSpeed: 18,
         startDelay: 500,
         loop: false,
         showCursor: false,
@@ -14,37 +13,52 @@ function introAnd(callback) {
 }
 
 
-function setUpProveAllTheCasesButton() {
-    $('#proveAllCasesWrapper').slideDown();
-    $('#proveAllCasesButton').click(function () {
+function setUpProveAllTheWeirdnessesButton() {
+    $('#proveAllWeirdnessesWrapper').slideDown();
+    $('#proveAllWeirdnessesButton').click(function () {
         $(this).attr("disabled", true);
-        $('.proveCaseButtonNormal').last().click();
+        $('.proveWeirdnessButtonNormal').last().click();
     });
 }
 function presentAllTheWeirdnesses() {
-    setUpProveAllTheCasesButton();
-    takeTheCase(1);
+    setUpProveAllTheWeirdnessesButton();
+    takeTheWeirdness(1);
     showSavedPuppies();
     initTerminal();
-    $('#footer').delay(1500).fadeIn();
 }
 
 
 function itIsOver() {
-    $('#proveAllCasesButton').attr("disabled", true);
+    $('#proveAllWeirdnessesButton').attr("disabled", true);
     refreshSavedPuppiesCount();
+
+    new Typed('#caseClosed', {
+        strings: [$('#caseClosedText').html()],
+        backSpeed: 100,
+        typeSpeed: 18,
+        startDelay: 1500,
+        loop: false,
+        showCursor: false,
+        onTypingPaused: function(){
+                scrollToBottom();
+        },
+        onComplete: function () {
+            $('#footer').delay(500).fadeIn(800);
+            scrollToBottom();
+        }
+    });
 }
 
-function takeTheCase(caseNo) {
+function takeTheWeirdness(weirdnessNo) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'cases/' + caseNo + '.js');
+    xhr.open('GET', 'weirdnesses/' + weirdnessNo + '.js');
     xhr.onload = function () {
         if (xhr.status === 404) {
             itIsOver();
             return;
         }
         if (xhr.readyState === 4 && xhr.status === 200) {
-            showCase(caseNo, xhr.responseText);
+            showWeirdness(weirdnessNo, xhr.responseText);
         }
     };
     xhr.onerror = function (e) {
@@ -53,27 +67,32 @@ function takeTheCase(caseNo) {
     xhr.send();
 }
 
-function showCase(caseNo, code) {
-    var caseId = 'case' + caseNo;
-    var $case = $('#caseX').clone().attr('id', caseId);
-    $case.find('.caseNo').text(caseNo);
-    $case.children('.caseCode').text(code);
+function scrollToBottom() {
+    $('html, body').animate({scrollTop: $(document).height()}, 900);
+}
+function showWeirdness(weirdnessNo, code) {
+    var weirdnessId = 'weirdness' + weirdnessNo;
+    var $weirdness = $('#weirdnessX').clone().attr('id', weirdnessId);
+    $weirdness.find('.weirdnessNo').text(weirdnessNo);
+    $weirdness.children('.weirdnessCode').text(code);
 
-    var $proveCaseButton = $case.find('.proveCaseButton');
-    $proveCaseButton.click(function () {
-        executeWeirdCode(code, $case.children('.caseResult'));
+    var $proveWeirdnessButton = $weirdness.find('.proveWeirdnessButtonNormal');
+    $proveWeirdnessButton.click(function () {
+        executeWeirdCode(code, $weirdness.children('.weirdnessResult'));
         $(this).attr("disabled", true);
-        $case.children('.provedIndicator').css('visibility', 'visible').hide().fadeIn();
+        $weirdness.children('.provedIndicator').css('visibility', 'visible').hide().fadeIn();
         refreshSavedPuppiesCount();
-        takeTheCase(caseNo + 1);
+        takeTheWeirdness(weirdnessNo + 1);
     });
 
-    if($('#proveAllCasesButton').attr('disabled')){
-        $proveCaseButton.click();
+    if ($('#proveAllWeirdnessesButton').attr('disabled')) {
+        $proveWeirdnessButton.click();
     }
 
-    $('#cases').append($case);
-    $case.slideDown('slow');
+    $('#weirdnesses').append($weirdness);
+    $weirdness.slideDown('slow');
+
+    scrollToBottom();
 }
 
 function executeWeirdCode(code, $result) {
@@ -119,5 +138,5 @@ function showSavedPuppies() {
     $('#savedPuppies').show();
 }
 function refreshSavedPuppiesCount() {
-    $('#savedPuppiesCount').text($.find('.proveCaseButtonNormal:disabled').length);
+    $('.savedPuppiesCount').text($.find('.proveWeirdnessButtonNormal:disabled').length);
 }

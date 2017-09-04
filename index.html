@@ -20,40 +20,50 @@
     <p>A <b>challenge</b> was sent to the <b>Internet Police</b>:</p> ^300
     <p id="challengeNote">`"Am weerdie, you sey? proov it!! FOr evry weerdie finding i give puppy back"`</p>
     <br>
-    <p> ^800 How many puppies can we save, Internet Officers?</p>
-    <p> ^250 Hurry up ^250 - Weirdie loves hot-dogs!</p>
+    <p> ^3000 How many puppies can we save, Internet Officers?</p>
+    <p> ^800 Hurry up^250, Weirdie loves hot-dogs!</p>
     <hr/>
 </div>
 
 <div id="intro"></div>
 
-<div id="savedPuppies" hidden>Puppies saved: <span id="savedPuppiesCount">0</span></div>
 
-<div id="caseX" class="caseWrapper" hidden>
-    <div class="caseTitle">Case no. <span class="caseNo"></span>
-        <button class="proveCaseButton proveCaseButtonNormal">Prove the case</button>
+<div id="weirdnessX" class="weirdnessWrapper" hidden>
+    <div class="weirdnessTitle">Weirdness no. <span class="weirdnessNo"></span>
+        <button class="proveWeirdnessButton proveWeirdnessButtonNormal">Prove the weirdness</button>
     </div>
-    <pre class="caseCode"></pre>
-    <pre class="caseResult"></pre>
+    <pre class="weirdnessCode"></pre>
+    <pre class="weirdnessResult"></pre>
     <div class="provedIndicator">This is indeed weird ¯\_(ツ)_/¯ Puppy saved!</div>
 </div>
 
-<div id="cases">
-    <div id="proveAllCasesWrapper" hidden>
-        <button id="proveAllCasesButton" class="proveCaseButton">Prove all the cases</button>
+<div id="weirdnesses">
+    <div id="puppiesCountLine">
+        <div id="savedPuppies" hidden>Puppies saved: <span class="savedPuppiesCount">0</span></div>
+        <div id="proveAllWeirdnessesWrapper" hidden>
+            <button id="proveAllWeirdnessesButton" class="proveWeirdnessButton">Prove all the weirdnesses</button>
+        </div>
     </div>
 </div>
-
 
 <div id="terminalWrapper" hidden>
     <div id="terminal"></div>
 </div>
 
+<div id="caseClosed"></div>
+<div id="caseClosedText" hidden>Good job, Internet Officer. ^100 You have <b>saved <span class="savedPuppiesCount">0</span> puppies</b>.
+    <p>^400 We believe JS Weirdie still keeps a couple of puppies, so we have to learn more of his weirdnesses...</p>
+    <p>^300 &nbsp;&nbsp;&nbsp;dismiss or move go back to the <a href="https://github.com/ptomaszek/js-weirdie">scene</a>.</p>
+</div>
+
+
 <div id="footer" hidden>
     <hr/>
-    If you know how to save another Puppy, share it on <a href="https://github.com/ptomaszek/js-weirdie">GitHub</a>
+    If you know how to save another puppy, share it on <a href="https://github.com/ptomaszek/js-weirdie">GitHub</a>
     |
     @Terminal by <a href="http://terminal.jcubic.pl/">jcubic</a>
 </div>
 </body>
+
+<div id="bottomDiv"></div>
 </html>

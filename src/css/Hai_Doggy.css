@@ -75,7 +75,7 @@ html {
     border-top-right-radius: 2px;
 }
 
-#weirdnesses .weirdnessWrapper .provedIndicator {
+#weirdnesses .weirdnessWrapper .weirdnessSummary {
     font-family: "Bookman Old Style", sans-serif;
     background-color: #fafbfc;
     visibility: hidden;

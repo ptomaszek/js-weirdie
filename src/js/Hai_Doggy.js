@@ -1,7 +1,7 @@
 intro();
 
 function intro() {
-    var afterIntro = function() {
+    var afterIntro = function () {
         $('#skipIntroButton').slideUp();
         setTimeout(function () {
             presentAllTheWeirdnesses();
@@ -50,12 +50,11 @@ function presentAllTheWeirdnesses() {
 
 function itIsOver() {
     $('#proveAllWeirdnessesButton').attr("disabled", true);
-    refreshSavedPuppiesCount();
+    // refreshSavedPuppiesCount();
 
     new Typed('#caseClosed', {
         strings: [$('#caseClosedText').html()],
-        backSpeed: 100,
-        typeSpeed: 10,
+        typeSpeed: 3,
         startDelay: 800,
         loop: false,
         showCursor: false,
@@ -63,7 +62,7 @@ function itIsOver() {
             scrollToBottom();
         },
         onComplete: function () {
-            $('#footer').delay(500).fadeIn(800);
+            $('#footer').delay(300).fadeIn(200);
             scrollToBottom();
         }
     });
@@ -87,8 +86,32 @@ function takeTheWeirdness(weirdnessNo) {
     xhr.send();
 }
 
+function produceWeirdnessResult(weirdnessNo, actualOutput, $summaryElement) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'weirdnesses/' + weirdnessNo + '_expectedOutput.log');
+    xhr.onload = function () {
+        var weirdnessSummaryText;
+        var expectedOutputOneLiner = xhr.responseText.replace(/(\r\n|\n|\r)/gm, "");
+
+        if (xhr.readyState === 4 && xhr.status === 200 && expectedOutputOneLiner === actualOutput) {
+            $summaryElement.addClass('weirdnessConfirmed');
+            weirdnessSummaryText = $('#weirdnessSummaryTextOk').text();
+            refreshSavedPuppiesCount();
+        } else {
+            weirdnessSummaryText = $('#weirdnessSummaryTextFail').text();
+            console.error('Weirdness no.: ' + weirdnessNo + '. Expected output: ' + expectedOutputOneLiner);
+        }
+
+        $summaryElement.css('visibility', 'visible').hide().text(weirdnessSummaryText).fadeIn();
+    };
+    xhr.onerror = function (e) {
+        console.error(e);
+    };
+    xhr.send();
+}
+
 function scrollToBottom() {
-    $('html, body').animate({scrollTop: $(document).height()}, 900);
+    $('html, body').animate({scrollTop: $(document).height()}, 100);
 }
 function showWeirdness(weirdnessNo, code) {
     var weirdnessId = 'weirdness' + weirdnessNo;
@@ -98,10 +121,10 @@ function showWeirdness(weirdnessNo, code) {
 
     var $proveWeirdnessButton = $weirdness.find('.proveWeirdnessButtonNormal');
     $proveWeirdnessButton.click(function () {
-        executeWeirdCode(code, $weirdness.children('.weirdnessResult'));
+        var $result = $weirdness.children('.weirdnessResult');
+        executeWeirdCode(code, $result);
         $(this).attr("disabled", true);
-        $weirdness.children('.provedIndicator').css('visibility', 'visible').hide().fadeIn();
-        refreshSavedPuppiesCount();
+        produceWeirdnessResult(weirdnessNo, $result.text(), $weirdness.children('.weirdnessSummary'));
         takeTheWeirdness(weirdnessNo + 1);
     });
 
@@ -118,7 +141,7 @@ function executeWeirdCode(code, $result) {
     var oldConsole = window.console;
     window.console = {
         log: function (str) {
-            $result.append((JSON && JSON.stringify ? JSON.stringify(str) : str) + '<br />');
+            $result.append((JSON && JSON.stringify ? JSON.stringify(str) : str) + '<br/ >');
         }
     };
     eval('(function() {' + code + '}())');
@@ -156,5 +179,5 @@ function showSavedPuppies() {
     $('#savedPuppies').show();
 }
 function refreshSavedPuppiesCount() {
-    $('.savedPuppiesCount').text($.find('.proveWeirdnessButtonNormal:disabled').length);
+    $('.savedPuppiesCount').text($.find('.weirdnessConfirmed').length);
 }

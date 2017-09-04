@@ -1,15 +1,35 @@
-introAnd(presentAllTheWeirdnesses);
+intro();
 
-function introAnd(callback) {
-    new Typed('#intro', {
-        // strings: ['H'],
+function intro() {
+    var afterIntro = function() {
+        $('#skipIntroButton').slideUp();
+        setTimeout(function () {
+            presentAllTheWeirdnesses();
+        }, 1000);
+    };
+
+
+    var typed = new Typed('#intro', {
         strings: [$('#introText').html()],
         typeSpeed: 18,
         startDelay: 500,
         loop: false,
         showCursor: false,
-        onComplete: callback
+        onComplete: afterIntro
     });
+
+    $('#skipIntroButton').fadeIn('slow')
+        .click(function () {
+            typed.destroy();
+
+            var introText = $('#introText').html().replace('`', '');
+            introText.match(/\^\w+/g).forEach(function (stopper) {
+                introText = introText.replace(stopper, '');
+            });
+
+            $('#intro').html(introText);
+            afterIntro();
+        });
 }
 
 
@@ -36,11 +56,11 @@ function itIsOver() {
         strings: [$('#caseClosedText').html()],
         backSpeed: 100,
         typeSpeed: 18,
-        startDelay: 1500,
+        startDelay: 800,
         loop: false,
         showCursor: false,
-        onTypingPaused: function(){
-                scrollToBottom();
+        onTypingPaused: function () {
+            scrollToBottom();
         },
         onComplete: function () {
             $('#footer').delay(500).fadeIn(800);

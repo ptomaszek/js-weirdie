@@ -3,6 +3,18 @@ html {
     padding: 50px 0 0 50px;
 }
 
+#skipIntroButton {
+    margin-bottom: 30px;
+    font-size: 12px;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%) repeat-x;
+    border: 1px solid rgba(27, 31, 35, 0.2);
+    -webkit-appearance: none;
+}
+
 #introText {
     margin-bottom: 20px;
 }
@@ -88,7 +100,7 @@ html {
 }
 
 #caseClosed{
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 #terminalWrapper {
@@ -106,6 +118,6 @@ html {
 
 #footer {
     font-size: 12px;
-    margin-top: 100px;
+    margin-top: 80px;
     text-align: center;
 }

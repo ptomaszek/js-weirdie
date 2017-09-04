@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico">
+
     <title>JS Weirdie</title>
 
     <script src="libs/jquery-3.2.1.min.js"></script>
@@ -16,17 +18,15 @@
     </script>
 </head>
 
+<button id="skipIntroButton" hidden>Skip intro</button>
 <div id="introText" hidden><b>JS Weirdie</b> just kidnapped dozens of <b>puppies</b> from a shelter! ^500
-    <p>A <b>challenge</b> was sent to the <b>Internet Police</b>:</p> ^300
+    <p>A <b>challenge</b> was sent to <b>The Internet Police</b>:</p> ^300
     <p id="challengeNote">`"Am weerdie, you sey? proov it!! FOr evry weerdie finding i give puppy back"`</p>
     <br>
     <p> ^3000 How many puppies can we save, Internet Officers?</p>
     <p> ^800 Hurry up^250, Weirdie loves hot-dogs!</p>
-    <hr/>
 </div>
-
 <div id="intro"></div>
-
 
 <div id="weirdnessX" class="weirdnessWrapper" hidden>
     <div class="weirdnessTitle">Weirdness no. <span class="weirdnessNo"></span>
@@ -38,8 +38,9 @@
 </div>
 
 <div id="weirdnesses">
+    <hr/>
     <div id="puppiesCountLine">
-        <div id="savedPuppies" hidden>Puppies saved: <span class="savedPuppiesCount">0</span></div>
+        <div id="savedPuppies" hidden>Puppies saved: <b><span class="savedPuppiesCount">0</span></b></div>
         <div id="proveAllWeirdnessesWrapper" hidden>
             <button id="proveAllWeirdnessesButton" class="proveWeirdnessButton">Prove all the weirdnesses</button>
         </div>
@@ -51,15 +52,16 @@
 </div>
 
 <div id="caseClosed"></div>
-<div id="caseClosedText" hidden>Good job, Internet Officer. ^100 You have <b>saved <span class="savedPuppiesCount">0</span> puppies</b>.
-    <p>^400 We believe JS Weirdie still keeps a couple of puppies, so we have to learn more of his weirdnesses...</p>
-    <p>^300 &nbsp;&nbsp;&nbsp;dismiss or move go back to the <a href="https://github.com/ptomaszek/js-weirdie">scene</a>.</p>
+<div id="caseClosedText" hidden>
+    Good job, Internet Officer. ^100 You have <b>saved <span class="savedPuppiesCount">0</span> puppies</b>!
+    <p>^400 We believe JS Weirdie still hides a couple of puppies, so we have to learn more of his weirdnesses...</p>
+    <p>^300 &nbsp;&nbsp;&nbsp;Dismiss or move go back to the <a href="https://github.com/ptomaszek/js-weirdie">scene</a>.</p>
 </div>
 
 
 <div id="footer" hidden>
     <hr/>
-    If you know how to save another puppy, share it on <a href="https://github.com/ptomaszek/js-weirdie">GitHub</a>
+    If you know how to save another puppy, share the solution on <a href="https://github.com/ptomaszek/js-weirdie">GitHub</a>
     |
     @Terminal by <a href="http://terminal.jcubic.pl/">jcubic</a>
 </div>

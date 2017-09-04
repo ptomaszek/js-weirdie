@@ -50,7 +50,6 @@ function presentAllTheWeirdnesses() {
 
 function itIsOver() {
     $('#proveAllWeirdnessesButton').attr("disabled", true);
-    // refreshSavedPuppiesCount();
 
     new Typed('#caseClosed', {
         strings: [$('#caseClosedText').html()],
@@ -124,7 +123,7 @@ function showWeirdness(weirdnessNo, code) {
         var $result = $weirdness.children('.weirdnessResult');
         executeWeirdCode(code, $result);
         $(this).attr("disabled", true);
-        produceWeirdnessResult(weirdnessNo, $result.text(), $weirdness.children('.weirdnessSummary'));
+        produceWeirdnessResult(weirdnessNo, $result.text(), $weirdness.find('.weirdnessSummary'));
         takeTheWeirdness(weirdnessNo + 1);
     });
 

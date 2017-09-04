@@ -41,6 +41,10 @@ html {
     float: right;
 }
 
+#weirdnesses #proveAllWeirdnessesButton {
+    float: right;
+}
+
 .weirdnessWrapper {
     position: relative;
     margin-top: 16px;
@@ -50,8 +54,8 @@ html {
 }
 
 #weirdnesses .proveWeirdnessButton {
-    float: right;
     padding: 5px 5px;
+    margin-left: 20px;
     font-size: 12px;
     line-height: 20px;
     white-space: nowrap;
@@ -62,10 +66,7 @@ html {
     -webkit-appearance: none;
 }
 
-#weirdnesses .weirdnessWrapper .weirdnessTitle {
-    font-family: "Bookman Old Style", sans-serif;
-    font-size: 15px;
-    font-weight: bold;
+#weirdnesses .weirdnessWrapper .weirdnessBar {
     line-height: 32px;
 
     padding: 5px 10px;
@@ -75,16 +76,26 @@ html {
     border-top-right-radius: 2px;
 }
 
-#weirdnesses .weirdnessWrapper .weirdnessSummary {
+#weirdnesses  .weirdnessTitle {
+    display: inline-block;
     font-family: "Bookman Old Style", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 32px;
+}
+
+#weirdnesses  .weirdnessSummary {
+    display: inline-block;
+    font-family: "Bookman Old Style", sans-serif;
+    font-size: 12px;
     background-color: #fafbfc;
     visibility: hidden;
-    height: 30px;
-    padding-left: 5px;
+    height: 32px;
+    margin-left: 20px;
 }
 
 #weirdnesses .weirdnessWrapper .weirdnessCode {
-    padding: 5px 10px;
+    padding: 12px 10px 0 10px;
     margin-top: 0;
     display: inline-block;
     width: 500px;
@@ -92,7 +103,7 @@ html {
 }
 
 #weirdnesses .weirdnessWrapper .weirdnessResult {
-    padding: 5px 10px;
+    padding: 12px 10px 0 10px;
     margin-top: 0;
     display: inline-block;
     width: 200px;

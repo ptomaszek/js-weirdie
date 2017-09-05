@@ -40,13 +40,13 @@ function setUpProveAllTheWeirdnessesButton() {
         $('.proveWeirdnessButtonNormal').last().click();
     });
 }
+
 function presentAllTheWeirdnesses() {
     setUpProveAllTheWeirdnessesButton();
     takeTheWeirdness(1);
     showSavedPuppies();
     initTerminal();
 }
-
 
 function itIsOver() {
     $('#proveAllWeirdnessesButton').attr("disabled", true);
@@ -144,7 +144,7 @@ function executeWeirdCode(code, $result) {
             $result.append((JSON && JSON.stringify ? JSON.stringify(str) : str) + '<br/ >');
         }
     };
-    eval('(function() {' + code + '}())');
+    new Function(code)();
     window.console = oldConsole;
 }
 

@@ -52,20 +52,22 @@ function itIsOver() {
     $('#proveAllWeirdnessesButton').attr("disabled", true);
     refreshSavedPuppiesCount();
 
-    new Typed('#caseClosed', {
-        strings: [$('#caseClosedText').html()],
-        typeSpeed: 3,
-        startDelay: 800,
-        loop: false,
-        showCursor: false,
-        onTypingPaused: function () {
-            scrollToBottom();
-        },
-        onComplete: function () {
-            $('#footer').delay(300).fadeIn(200);
-            scrollToBottom();
-        }
-    });
+    setTimeout(function () {
+        new Typed('#caseClosed', {
+            strings: [$('#caseClosedText').html()],
+            typeSpeed: 3,
+            startDelay: 300,
+            loop: false,
+            showCursor: false,
+            onTypingPaused: function () {
+                scrollToBottom();
+            },
+            onComplete: function () {
+                $('#footer').delay(300).fadeIn(200);
+                scrollToBottom();
+            }
+        });
+    }, 500);
 }
 
 function takeTheWeirdness(weirdnessNo) {
@@ -167,7 +169,7 @@ function initTerminal() {
             title: 'JS Terminal (emulator)',
             greetings: 'Will you save another Puppy?',
             name: 'savingPuppy',
-            width: 500,
+            width: 350,
             height: 200
         }).insert('null <= 0');
     });

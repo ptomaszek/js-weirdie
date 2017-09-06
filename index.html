@@ -9,7 +9,6 @@
     <script src="libs/jquery-3.2.1.min.js"></script>
     <script src="libs/jquery.terminal-1.6.3.min.js"></script>
     <script src="libs/typed.min.js"></script>
-    <script src="libs/q.js"></script>
 
     <link rel="stylesheet" type="text/css" href="libs/jquery.terminal-1.6.3.min.css">
     <link rel="stylesheet" type="text/css" href="src/css/Hai_Doggy.css">
@@ -17,7 +16,7 @@
         $.getScript('src/js/Hai_Doggy.js');
     </script>
 </head>
-
+<body>
 <button id="skipIntroButton" hidden>Skip intro</button>
 <div id="introText" hidden><b>JS Weirdie</b> just kidnapped dozens of <b>puppies</b> from a shelter! ^500
     <p>A <b>challenge</b> was sent to <b>The Internet Police</b>:</p> ^300
@@ -33,7 +32,7 @@
 
 <div id="weirdnessX" class="weirdnessWrapper" hidden>
     <div class="weirdnessBar">
-    <div class="weirdnessTitle">Weirdness no. <span class="weirdnessNo"></span></div>
+        <div class="weirdnessTitle">Weirdness no. <span class="weirdnessNo"></span></div>
         <button class="proveWeirdnessButton proveWeirdnessButtonNormal">Prove it</button>
         <div class="weirdnessSummary">&nbsp;</div>
     </div>
@@ -66,10 +65,12 @@
 <div id="footer" hidden>
     <hr/>
     If you know how to save another puppy, share the solution on <a href="https://github.com/ptomaszek/js-weirdie">GitHub</a>
-    |
-    @Terminal by <a href="http://terminal.jcubic.pl/">jcubic</a>
+    <p>
+        Used: <a href="http://mattboldt.com/typed.js/">mattboldt.com/typed.js</a> | <a href="http://terminal.jcubic.pl/">terminal.jcubic.pl</a> | JS, jQuery,
+        Internet and stuff
+    </p>
 </div>
-</body>
 
 <div id="bottomDiv"></div>
+</body>
 </html>

@@ -34,7 +34,7 @@ function intro() {
 
 
 function setUpProveAllTheWeirdnessesButton() {
-    $('#proveAllWeirdnessesWrapper').slideDown();
+    $('#proveAllWeirdnessesWrapper').delay(500).slideDown();
     $('#proveAllWeirdnessesButton').click(function () {
         $(this).attr("disabled", true);
         $('.proveWeirdnessButtonNormal').last().click();
@@ -55,7 +55,7 @@ function itIsOver() {
     setTimeout(function () {
         new Typed('#caseClosed', {
             strings: [$('#caseClosedText').html()],
-            typeSpeed: 3,
+            typeSpeed: 8,
             startDelay: 300,
             loop: false,
             showCursor: false,
@@ -124,7 +124,7 @@ function showWeirdness(weirdnessNo, code) {
     var $proveWeirdnessButton = $weirdness.find('.proveWeirdnessButtonNormal');
     $proveWeirdnessButton.click(function () {
         var $result = $weirdness.children('.weirdnessResult');
-        executeWeirdCode(code, $result);
+        executeWeirdCode(weirdnessNo, code, $result);
         $(this).attr("disabled", true);
         produceWeirdnessResult(weirdnessNo, $result.text(), $weirdness.find('.weirdnessSummary'));
         takeTheWeirdness(weirdnessNo + 1);
@@ -138,16 +138,27 @@ function showWeirdness(weirdnessNo, code) {
     $weirdness.slideDown('slow', scrollToBottom);
 }
 
-function executeWeirdCode(code, $result) {
-    $result.text('');
-    var oldConsole = window.console;
-    window.console = {
-        log: function (str) {
-            $result.append((JSON && JSON.stringify ? JSON.stringify(str) : str) + '<br/ >');
+function executeWeirdCode(weirdnessNo, code, $result) {
+    var lines = code.split('\n');
+
+    for (var i = 0; i < lines.length; i++) {
+        if (lines[i].startsWith('evaluateThis')) {
+            var parsedLine = lines[i].replace(/evaluateThis\(/g, "");
+            var lineTooComplex = (parsedLine.match(/\);/g) || []).length;
+            if (lineTooComplex > 1) {
+                console.error("Weirdness no.: " + weirdnessNo + ". Sorry, I'm not smart enough to know where 'evaluateThis' ends in this line: " + lines[i]);
+                return;
+            }
+            parsedLine = parsedLine.replace(/\);/g, ";");
+            var code_result = ( eval(parsedLine) );
+            $result.append(Number.isNaN(code_result) || JSON.stringify(code_result) === undefined ? '' + code_result : JSON.stringify(code_result)).append('<br/ >'); //NaN is not a JSON standard; also print undefined if explicitly asked
+        } else {
+            eval(lines[i]);
         }
-    };
-    new Function(code)();
-    window.console = oldConsole;
+    }
+
+    function evaluateThis() {
+    }
 }
 
 function initTerminal() {

@@ -1,1 +1,1 @@
-console.log(typeof NaN);
+evaluateThis(typeof NaN);

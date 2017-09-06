@@ -1,1 +1,4 @@
-console.log([] + []);
+evaluateThis({} + {});
+evaluateThis({} + []);
+evaluateThis([] + {});
+evaluateThis([] + []);

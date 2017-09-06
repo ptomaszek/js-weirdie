@@ -1,2 +1,2 @@
-console.log(NaN == NaN);
-console.log(NaN === NaN);
+evaluateThis(NaN == NaN);
+evaluateThis(NaN === NaN);

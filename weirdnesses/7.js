@@ -1,2 +1,2 @@
-console.log(1 < 2 < 3);
-console.log(3 > 2 > 1);
+evaluateThis(1 < 2 < 3);
+evaluateThis(3 > 2 > 1);

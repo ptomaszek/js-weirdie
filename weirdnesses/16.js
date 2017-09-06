@@ -1,0 +1,2 @@
+evaluateThis(parseFloat(''));
+evaluateThis(isNaN(''));

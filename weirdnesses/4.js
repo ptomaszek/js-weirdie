@@ -1,2 +1,2 @@
-console.log(1 + '1');
-console.log(1 - '1');
+evaluateThis(1 + '1');
+evaluateThis(1 - '1');

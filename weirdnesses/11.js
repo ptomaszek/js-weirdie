@@ -1,1 +1,1 @@
-console.log([] == 0);
+evaluateThis([] == 0);

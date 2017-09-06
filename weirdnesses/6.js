@@ -1,3 +1,2 @@
-var x = 3;
-console.log('5' + x - x);
-console.log('5' - x + x);
+evaluateThis('5' + 3 - 3);
+evaluateThis('5' - 3 + 3);

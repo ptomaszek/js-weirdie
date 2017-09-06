@@ -1,1 +1,1 @@
-console.log([1,2] + [3,4]);
+evaluateThis([1,2] + [3,4]);

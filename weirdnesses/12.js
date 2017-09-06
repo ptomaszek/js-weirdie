@@ -1,1 +1,1 @@
-console.log('\t' == 0);
+evaluateThis('\t' == 0);

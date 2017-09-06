@@ -1,4 +1,1 @@
 evaluateThis({} + {});
-evaluateThis({} + []);
-evaluateThis([] + {});
-evaluateThis([] + []);

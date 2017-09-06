@@ -1,1 +1,2 @@
-evaluateThis([] == 0);
+evaluateThis({} + []);
+evaluateThis([] + {});

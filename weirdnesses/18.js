@@ -1,0 +1,1 @@
+evaluateThis([] == 0);

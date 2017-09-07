@@ -131,7 +131,10 @@ function showWeirdness(weirdnessNo, code) {
         } else {
             codeWithStyle += line;
         }
+        codeWithStyle += '\n';
     }
+
+    console.log(codeWithStyle);
 
     $weirdness.children('.weirdnessCode').html(codeWithStyle);
 
@@ -165,18 +168,17 @@ function executeWeirdCode(weirdnessNo, code, $result) {
                 console.error("Weirdness no.: " + weirdnessNo + ". Sorry, I'm not smart enough to know where 'printThis' ends in this line: " + lines[i]);
                 return;
             }
-            var expression = findExpressionIn(lines[i]);
-            evaluateAndPrint(expression);
+            evalAndPrint(findExpressionIn(lines[i]), $result);
         } else {
             eval(lines[i]);
         }
-    }
 
-    function evaluateAndPrint(expression) {
-        var expressionResult = eval(expression);
-        $result.append(Number.isNaN(expressionResult) || JSON.stringify(expressionResult) === undefined //NaN is not a JSON standard; also print undefined if explicitly asked
-            ? '' + expressionResult
-            : JSON.stringify(expressionResult)).append('<br/ >');
+        function evalAndPrint(expression, $resultElement) {
+            var expressionResult = eval(expression);
+            $resultElement.append(Number.isNaN(expressionResult) || JSON.stringify(expressionResult) === undefined //NaN is not a JSON standard; also print undefined if explicitly asked
+                ? '' + expressionResult
+                : JSON.stringify(expressionResult)).append('<br/ >');
+        }
     }
 }
 

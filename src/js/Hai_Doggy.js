@@ -34,7 +34,7 @@ function intro() {
 
 
 function setUpProveAllTheWeirdnessesButton() {
-    $('#proveAllWeirdnessesWrapper').delay(500).slideDown();
+    $('#puppiesCountWrapper').css('visibility', 'visible').delay(500).fadeIn();
     $('#proveAllWeirdnessesButton').click(function () {
         $(this).attr("disabled", true);
         $('.proveWeirdnessButtonNormal').last().click();
@@ -56,14 +56,14 @@ function itIsOver() {
         new Typed('#caseClosed', {
             strings: [$('#caseClosedText').html()],
             typeSpeed: 8,
-            startDelay: 300,
+            startDelay: 100,
             loop: false,
             showCursor: false,
             onTypingPaused: function () {
                 scrollToBottom();
             },
             onComplete: function () {
-                $('#footer').delay(300).fadeIn(200);
+                $('#footer').delay(100).fadeIn();
                 scrollToBottom();
             }
         });
@@ -113,8 +113,12 @@ function produceWeirdnessResult(weirdnessNo, actualOutput, $summaryElement) {
 }
 
 function scrollToBottom() {
-    $('html, body').animate({scrollTop: $(document).height()}, 100);
+    var $html = $('html, body');
+    if (!$html.is(':animated')) {
+        $html.animate({scrollTop: $(document).height()}, 500);
+    }
 }
+
 function showWeirdness(weirdnessNo, code) {
     var weirdnessId = 'weirdness' + weirdnessNo;
     var $weirdness = $('#weirdnessX').clone().attr('id', weirdnessId);
@@ -131,10 +135,10 @@ function showWeirdness(weirdnessNo, code) {
         } else {
             codeWithStyle += line;
         }
-        codeWithStyle += '\n';
+        if (i + 1 < lines.length) {
+            codeWithStyle += '\n';
+        }
     }
-
-    console.log(codeWithStyle);
 
     $weirdness.children('.weirdnessCode').html(codeWithStyle);
 
@@ -205,7 +209,7 @@ function initTerminal() {
             height: 200
         }).insert('null <= 0');
     });
-    $('#terminalWrapper').attr('visibility', 'visible').hide().delay(1000).slideDown('slow');
+    $('#terminalWrapper').css('visibility', 'visible').hide().delay(1000).fadeIn('slow');
 }
 
 

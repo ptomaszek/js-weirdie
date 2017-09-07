@@ -31,14 +31,12 @@ html {
 
 #puppiesCountLine {
     padding: 40px 0 40px 0;
+    visibility: hidden;
 }
 
 #savedPuppies {
+    margin-top: 8px;
     float: left;
-}
-
-#weirdnesses #proveAllWeirdnessWrapper {
-    float: right;
 }
 
 #weirdnesses #proveAllWeirdnessesButton {
@@ -103,11 +101,11 @@ html {
 }
 
 #weirdnesses .weirdnessWrapper .expression{
-    color: #ff0060;
+    color: #b6008d;
 }
 
 #weirdnesses .weirdnessWrapper .weirdnessResult {
-    color: #ff0060;
+    color: #b6008d;
     padding: 12px 10px 0 10px;
     margin-top: 0;
     display: inline-block;

@@ -1,12 +1,6 @@
 intro();
 
 function intro() {
-    var afterIntro = function () {
-        $('#skipIntroButton').slideUp();
-        setTimeout(function () {
-            presentAllTheWeirdnesses();
-        }, 1000);
-    };
 
 
     var typed = new Typed('#intro', {
@@ -18,18 +12,27 @@ function intro() {
         onComplete: afterIntro
     });
 
-    $('#skipIntroButton').fadeIn('slow')
-        .click(function () {
-            typed.destroy();
+    $('#skipIntroButtonWrapper').fadeIn('slow');
 
-            var introText = $('#introText').html().replace('`', '');
-            introText.match(/\^\w+/g).forEach(function (stopper) {
-                introText = introText.replace(stopper, '');
-            });
+    $('#skipIntroButton').click(function () {
+        $(this).attr("disabled", true);
+        typed.destroy();
 
-            $('#intro').html(introText);
-            afterIntro();
+        var introText = $('#introText').html().replace('`', '');
+        introText.match(/\^\w+/g).forEach(function (stopper) {
+            introText = introText.replace(stopper, '');
         });
+
+        $('#intro').html(introText);
+        afterIntro();
+    });
+
+    function afterIntro() {
+        $('#skipIntroButtonWrapper').slideUp();
+        setTimeout(function () {
+            presentAllTheWeirdnesses();
+        }, 1000);
+    };
 }
 
 
@@ -59,11 +62,11 @@ function itIsOver() {
             startDelay: 100,
             loop: false,
             showCursor: false,
-            onTypingPaused: function () {
+            onTypingResumed: function () {
                 scrollToBottom();
             },
             onComplete: function () {
-                $('#footer').delay(100).fadeIn();
+                $('#footer').fadeIn();
                 scrollToBottom();
             }
         });
@@ -115,7 +118,7 @@ function produceWeirdnessResult(weirdnessNo, actualOutput, $summaryElement) {
 function scrollToBottom() {
     var $html = $('html, body');
     if (!$html.is(':animated')) {
-        $html.animate({scrollTop: $(document).height()}, 500);
+        $html.animate({scrollTop: $(document).height()}, 200);
     }
 }
 

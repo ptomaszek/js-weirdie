@@ -1,2 +1,2 @@
-evaluateThis(parseFloat(''));
-evaluateThis(isNaN(''));
+printThis(parseFloat(''));
+printThis(isNaN(''));

@@ -1,1 +1,1 @@
-evaluateThis(typeof NaN);
+printThis(typeof NaN);

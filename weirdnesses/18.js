@@ -1,1 +1,1 @@
-evaluateThis([] == 0);
+printThis([] == 0);

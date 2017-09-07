@@ -1,1 +1,1 @@
-evaluateThis('\t' == 0);
+printThis('\t' == 0);

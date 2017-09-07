@@ -1,2 +1,2 @@
-evaluateThis({} + []);
-evaluateThis([] + {});
+printThis({} + []);
+printThis([] + {});

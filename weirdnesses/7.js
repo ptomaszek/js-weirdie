@@ -1,2 +1,2 @@
-evaluateThis(1 < 2 < 3);
-evaluateThis(3 > 2 > 1);
+printThis(1 < 2 < 3);
+printThis(3 > 2 > 1);

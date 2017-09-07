@@ -119,7 +119,21 @@ function showWeirdness(weirdnessNo, code) {
     var weirdnessId = 'weirdness' + weirdnessNo;
     var $weirdness = $('#weirdnessX').clone().attr('id', weirdnessId);
     $weirdness.find('.weirdnessNo').text(weirdnessNo);
-    $weirdness.children('.weirdnessCode').text(code);
+
+    var codeWithStyle = '';
+
+    var lines = code.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+        var line = lines[i];
+        if (line.startsWith('printThis')) {
+            var expression = findExpressionIn(line);
+            codeWithStyle += line.replace(expression, '<span class="expression">' + expression + '</span>');
+        } else {
+            codeWithStyle += line;
+        }
+    }
+
+    $weirdness.children('.weirdnessCode').html(codeWithStyle);
 
     var $proveWeirdnessButton = $weirdness.find('.proveWeirdnessButtonNormal');
     $proveWeirdnessButton.click(function () {
@@ -138,26 +152,31 @@ function showWeirdness(weirdnessNo, code) {
     $weirdness.slideDown('slow', scrollToBottom);
 }
 
+function findExpressionIn(text) {
+    return $.trim(text.replace(/printThis\(/g, "").replace(/\);/g, ""));
+}
 function executeWeirdCode(weirdnessNo, code, $result) {
     var lines = code.split('\n');
 
     for (var i = 0; i < lines.length; i++) {
-        if (lines[i].startsWith('evaluateThis')) {
-            var parsedLine = lines[i].replace(/evaluateThis\(/g, "");
-            var lineTooComplex = (parsedLine.match(/\);/g) || []).length;
-            if (lineTooComplex > 1) {
-                console.error("Weirdness no.: " + weirdnessNo + ". Sorry, I'm not smart enough to know where 'evaluateThis' ends in this line: " + lines[i]);
+        if (lines[i].startsWith('printThis')) {
+            var lineTooComplex = (lines[i].match(/\);/g) || []).length > 1;
+            if (lineTooComplex) {
+                console.error("Weirdness no.: " + weirdnessNo + ". Sorry, I'm not smart enough to know where 'printThis' ends in this line: " + lines[i]);
                 return;
             }
-            parsedLine = parsedLine.replace(/\);/g, ";");
-            var code_result = ( eval(parsedLine) );
-            $result.append(Number.isNaN(code_result) || JSON.stringify(code_result) === undefined ? '' + code_result : JSON.stringify(code_result)).append('<br/ >'); //NaN is not a JSON standard; also print undefined if explicitly asked
+            var expression = findExpressionIn(lines[i]);
+            evaluateAndPrint(expression);
         } else {
             eval(lines[i]);
         }
     }
 
-    function evaluateThis() {
+    function evaluateAndPrint(expression) {
+        var expressionResult = eval(expression);
+        $result.append(Number.isNaN(expressionResult) || JSON.stringify(expressionResult) === undefined //NaN is not a JSON standard; also print undefined if explicitly asked
+            ? '' + expressionResult
+            : JSON.stringify(expressionResult)).append('<br/ >');
     }
 }
 

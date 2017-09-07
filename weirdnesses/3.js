@@ -1,2 +1,2 @@
-evaluateThis(NaN == NaN);
-evaluateThis(NaN === NaN);
+printThis(NaN == NaN);
+printThis(NaN === NaN);

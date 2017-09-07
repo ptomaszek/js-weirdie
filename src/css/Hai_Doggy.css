@@ -102,7 +102,12 @@ html {
     border-right: 1px solid red;
 }
 
+#weirdnesses .weirdnessWrapper .expression{
+    color: #ff5e00;
+}
+
 #weirdnesses .weirdnessWrapper .weirdnessResult {
+    color: #ff5e00;
     padding: 12px 10px 0 10px;
     margin-top: 0;
     display: inline-block;

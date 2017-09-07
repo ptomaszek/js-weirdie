@@ -1,1 +1,1 @@
-evaluateThis([] + []);
+printThis([] + []);

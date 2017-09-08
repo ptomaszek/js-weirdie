@@ -32,7 +32,7 @@ function intro() {
         setTimeout(function () {
             presentAllTheWeirdnesses();
         }, 1000);
-    };
+    }
 }
 
 
@@ -181,7 +181,13 @@ function executeWeirdCode(weirdnessNo, code, $result) {
         }
 
         function evalAndPrint(expression, $resultElement) {
-            var expressionResult = eval(expression);
+            try {
+                var expressionResult = eval(expression);
+            }
+            catch(err) {
+                expressionResult = err.message;
+            }
+
             $resultElement.append(Number.isNaN(expressionResult) || JSON.stringify(expressionResult) === undefined //NaN is not a JSON standard; also print undefined if explicitly asked
                 ? '' + expressionResult
                 : JSON.stringify(expressionResult)).append('<br/ >');

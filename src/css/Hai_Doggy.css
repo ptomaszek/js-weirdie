@@ -83,20 +83,22 @@ html {
 }
 
 #weirdnesses  .weirdnessSummary {
+    line-height: 16px;
     display: inline-block;
     font-family: "Bookman Old Style", sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     background-color: #fafbfc;
     visibility: hidden;
-    height: 32px;
-    margin-left: 20px;
+    margin-right: 32px;
+    vertical-align: middle;
+    float: right;
 }
 
 #weirdnesses .weirdnessWrapper .weirdnessCode {
     padding: 12px 10px 0 10px;
     margin-top: 0;
     display: inline-block;
-    width: 500px;
+    width: 400px;
     border-right: 1px solid red;
 }
 
@@ -118,10 +120,9 @@ html {
 }
 
 #terminalWrapper {
-    float: right;
-    display: inline-block;
-    margin-top: 50px;
-    margin-left: 50px;
+    position: fixed;
+    right: 10px;
+    top: 30px;
 }
 
 .terminal {

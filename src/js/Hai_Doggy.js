@@ -1,8 +1,8 @@
+const PRINT_FUNC_NAME = 'printThis';
+
 intro();
 
 function intro() {
-
-
     var typed = new Typed('#intro', {
         strings: [$('#introText').html()],
         typeSpeed: 18,
@@ -100,14 +100,14 @@ function produceWeirdnessResult(weirdnessNo, actualOutput, $summaryElement) {
 
         if (xhr.readyState === 4 && xhr.status === 200 && expectedOutputOneLiner === actualOutput) {
             $summaryElement.addClass('weirdnessConfirmed');
-            weirdnessSummaryText = $('#weirdnessSummaryTextOk').text();
+            weirdnessSummaryText = $('#weirdnessSummaryTextOk').html();
             refreshSavedPuppiesCount();
         } else {
             weirdnessSummaryText = $('#weirdnessSummaryTextFail').text();
             console.error('Weirdness no.: ' + weirdnessNo + '. Expected output: ' + expectedOutputOneLiner);
         }
 
-        $summaryElement.css('visibility', 'visible').hide().text(weirdnessSummaryText).fadeIn();
+        $summaryElement.css('visibility', 'visible').hide().html(weirdnessSummaryText).fadeIn();
     };
     xhr.onerror = function (e) {
         console.error(e);
@@ -132,7 +132,7 @@ function showWeirdness(weirdnessNo, code) {
     var lines = code.split('\n');
     for (var i = 0; i < lines.length; i++) {
         var line = lines[i];
-        if (line.startsWith('printThis')) {
+        if (line.startsWith(PRINT_FUNC_NAME)) {
             var expression = findExpressionIn(line);
             codeWithStyle += line.replace(expression, '<span class="expression">' + expression + '</span>');
         } else {
@@ -163,16 +163,16 @@ function showWeirdness(weirdnessNo, code) {
 }
 
 function findExpressionIn(text) {
-    return $.trim(text.replace(/printThis\(/g, "").replace(/\);/g, ""));
+    return $.trim(text.replace(new RegExp(PRINT_FUNC_NAME + "\\(", "g"), "").replace(/\);/g, ""));
 }
 function executeWeirdCode(weirdnessNo, code, $result) {
     var lines = code.split('\n');
 
     for (var i = 0; i < lines.length; i++) {
-        if (lines[i].startsWith('printThis')) {
+        if (lines[i].startsWith(PRINT_FUNC_NAME)) {
             var lineTooComplex = (lines[i].match(/\);/g) || []).length > 1;
             if (lineTooComplex) {
-                console.error("Weirdness no.: " + weirdnessNo + ". Sorry, I'm not smart enough to know where 'printThis' ends in this line: " + lines[i]);
+                console.error("Weirdness no.: " + weirdnessNo + ". Sorry, I'm not smart enough to know where " + PRINT_FUNC_NAME + "() ends in this line: " + lines[i]);
                 return;
             }
             evalAndPrint(findExpressionIn(lines[i]), $result);
@@ -214,7 +214,7 @@ function initTerminal() {
             title: 'JS Terminal (emulator)',
             greetings: 'Will you save another Puppy?',
             name: 'savingPuppy',
-            width: 350,
+            width: 210,
             height: 200
         }).insert('null <= 0');
     });

@@ -7,7 +7,10 @@
   "dependencies": {
     "jquery": "3.2.1",
     "jquery.terminal": "1.6.4",
-    "q": "1.5.0",
     "typed.js": "^2.0.5"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-flatten": "^0.3.1"
   }
 }

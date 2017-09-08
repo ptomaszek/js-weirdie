@@ -16,7 +16,7 @@ More on: https://rawgit.com/ptomaszek/js-weirdie/master/index.html
 ### Adding a weirdness 
 
 1. Go to the [weirdnesses](weirdnesses) folder
-1. Follow the naming convenction and create the script and expected output
+1. Following the convenction create the script and expected output
 
 #### Restrictions:
 
